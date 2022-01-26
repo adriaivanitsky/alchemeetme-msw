@@ -61,6 +61,11 @@ test('Should render the header with Sasuke 🌬️🔥', async () => {
   }
 
   // 🚨 Use the server to change the response for this test
+  server.use(
+    rest.get('https://uzgiamkrbapxufnwdrja.supabase.co/rest/v1/users?select=*', (req, res, ctx) => {
+      return res(ctx.json([sasuke]))
+    })
+  )
 
   render(<App />)
 
